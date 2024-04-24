@@ -174,9 +174,10 @@ class Hermite():
             The value of `H_k` evaluated at `x`.
         """
         lagrange: float = self.__lagrange.eval(index, x)
+        
         # Calculate slope.
-        slope: float = (self.__lagrange.eval(index, x - Hermite.SHIFT) \
-                        + self.__lagrange.eval(index, x + Hermite.SHIFT)) \
+        slope: float = (self.__lagrange.eval(index, x + Hermite.SHIFT) \
+                        - self.__lagrange.eval(index, x - Hermite.SHIFT)) \
                         / (2 * Hermite.SHIFT)
 
         return (lagrange ** 2) * (1 - 2 * slope * (x - self.__x_arr[index]))
