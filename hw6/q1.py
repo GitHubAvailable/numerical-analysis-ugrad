@@ -214,8 +214,8 @@ def print_results(col_a : np.array,
 
     # Print header.
     # NOTE: the width of each cell is currently required to be literal int
-    print(f"|{label_a : ^10}|{label_b : ^25}|")
-    print(f"|{':' + '-' * 8 + ':'}|"
+    print(f"|{label_a : ^12}|{label_b : ^25}|")
+    print(f"|{':' + '-' * 10 + ':'}|"
           + f"{':' + '-' * 23 + ':'}|")
     
     # Get the length of column `a`, column `b`.
@@ -234,7 +234,7 @@ def print_results(col_a : np.array,
             row[1] = col_b[index]
         
         # Print row.
-        print(f"| {row[0] : <9}|{row[1] : ^25}|")
+        print(f"| {row[0] : <11}|{row[1] : ^25}|")
 
 def main():
     LOW = 0
@@ -245,7 +245,7 @@ def main():
     BOUND_2 = (0, 2)
 
     # Initialize `h`.
-    steps = np.array([2 ** (-i) for i in range(7)])
+    steps = np.array([2 ** (-i) for i in range(9)])
     print(f"Steps: {steps}")
 
     # Get vectorized integral functions.
@@ -276,6 +276,7 @@ def main():
     plt.plot(steps, simp1, "-o", label=r"Composite Simpson's Rule")
 
     plt.xscale("log", base=2)
+    plt.xticks(steps)
     plt.xlabel("x")
     plt.ylabel("y")
     plt.legend()
@@ -290,6 +291,7 @@ def main():
     plt.plot(steps, simp2, "-o", label=r"Composite Simpson's Rule")
 
     plt.xscale("log", base=2)
+    plt.xticks(steps)
     plt.xlabel("x")
     plt.ylabel("y")
     plt.legend()
