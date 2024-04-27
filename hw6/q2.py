@@ -69,7 +69,7 @@ class Polynomial(Function):
         return y
     
     def __str__(self) -> str:
-        return f"p_{self.n}(x) = " \
+        return f"p_{self.n - 1}(x) = " \
                + ' + '.join([
                    f"{coef}x^{i}" for i, coef in enumerate(self.coefficients)
                ])
